@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="transactions">
+        <h2>Transactions</h2>
+        <table class="transactions__list" border="1">
+            <thead>
+                <tr>
+                    <td>Date</td>
+                    <td>ID</td>
+                    <td>Client</td>
+                    <td>Operation</td>
+                    <td>Amount</td>
+                    <td>Currency</td>
+                    <td>Fee</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for transaction in transactions %}
+                    <tr class="transaction">
+                        <td>{{ transaction.date }}</td>
+                        <td>{{ transaction.id }}</td>
+                        <td>{{ transaction.type }}</td>
+                        <td>{{ transaction.operation }}</td>
+                        <td>{{ transaction.amount }}</td>
+                        <td>{{ transaction.currency }}</td>
+                        <td>{{ transaction.fee ? transaction.fee|number_format(2, '.', ',') : 0 }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
